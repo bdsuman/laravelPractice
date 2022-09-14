@@ -345,7 +345,7 @@
 								<li class="active"><a href="{{ url('/') }}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 								<li><a href="{{ url('users') }}"><i class="icon-user-plus"></i> <span>Users</span></a></li>
 								<li><a href="{{ route('blogCategory.index') }}"><i class="icon-user-plus"></i> <span>Blog Category</span></a></li>
-								<li><a href=""><i class="icon-user-plus"></i> <span>Blog</span></a></li>
+								<li><a href="{{ route('blog.index') }}"><i class="icon-user-plus"></i> <span>Blog</span></a></li>
 
 							</ul>
 						</div>

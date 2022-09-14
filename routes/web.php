@@ -40,3 +40,5 @@ Route::delete('users/destroy/{id}', [App\Http\Controllers\Admin\UserController::
 
 
 Route::resource('blogCategory', App\Http\Controllers\Admin\BlogCategoryController::class);
+
+Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);

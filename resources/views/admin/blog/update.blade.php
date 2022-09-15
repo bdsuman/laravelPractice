@@ -1,6 +1,6 @@
 @extends('admin.layouts.default')
 
-@section('title', 'User')
+@section('title', 'Blog Edit')
 
 @section('content')
     <!-- Page header -->
@@ -21,7 +21,7 @@
         <!-- Basic datatable -->
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <h5 class="panel-title">Update Blog Category</h5>
+                <h5 class="panel-title">Update Blog </h5>
                 <div class="heading-elements">
                     <ul class="icons-list">
                         <li><a data-action="collapse"></a></li>
@@ -32,17 +32,46 @@
             </div>
 
             <div class="panel-body">
-                <form class="form-horizontal" action="{{ route('blogCategory.update', $blogCategoryInfo->id) }}" method="POST">
+                <form class="form-horizontal" action="{{ route('blog.update', $blog->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 
                     <fieldset class="content-group">
                         <legend class="text-bold"></legend>
-
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Name</label>
+                            <label class="control-label col-lg-2">Category</label>
                             <div class="col-lg-10">
-                                <input type="text" name="name" class="form-control" value="{{ $blogCategoryInfo->name }}">
+                                <select name="category_id" class="form-control">
+
+                                    <option value="">Select Category</option>
+                                    @foreach ($blogCategories as $key => $value)
+                                        <option value="{{ $value->id }}"  @if ($blog->category_id == $value->id) selected @endif>{{ $value->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Title</label>
+                            <div class="col-lg-10">
+                                <input type="text" name="title" class="form-control" value="{{ $blog->title }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Sub Title</label>
+                            <div class="col-lg-10">
+                                <input type="text" name="sub_title" class="form-control" value="{{ $blog->sub_title }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Description</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" name="description" placeholder="Write Short Description">{{ $blog->description }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Image</label>
+                            <div class="col-lg-10">
+                                <input type="file" name="thumbnail" class="form-control" accept="image/*"/>
                             </div>
                         </div>
 
@@ -51,8 +80,8 @@
                             <div class="col-lg-10">
                                 <select name="valid" class="form-control">
                                     <option value="">Select Status</option>
-                                    <option value="1" @if ($blogCategoryInfo->valid == 1) selected @endif>Active</option>
-                                    <option value="0" @if ($blogCategoryInfo->valid == 0) selected @endif>In Active</option>
+                                    <option value="1" @if ($blog->valid == 1) selected @endif>Active</option>
+                                    <option value="0" @if ($blog->valid == 0) selected @endif>In Active</option>
                                 </select>
                             </div>
                         </div>
@@ -61,7 +90,7 @@
 
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
-                        <a href="{{ route('blogCategory.index') }}" class="btn btn-default">Back To List</a>
+                        <a href="{{ route('blog.index') }}" class="btn btn-default">Back To List</a>
                     </div>
 
                 </form>

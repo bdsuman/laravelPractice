@@ -97,7 +97,9 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['blogCategories'] = BlogCategory::get();
+        $data['blog'] = Blog::find($id);
+        return view('admin.blog.update', $data);
     }
 
     /**
@@ -109,7 +111,34 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //dd($request->all());
+       $validator = Validator::make($request->all(), [
+        'category_id'  => 'required',
+        'title'  => 'required',
+        'description'  => 'required',
+        'description'  => 'required',
+        'valid' => 'required',
+    ]);
+
+    if ($validator->passes()) {
+
+        Blog::find($id)->update([
+            'category_id'     => $request->category_id,
+            'title'     => $request->title,
+            'sub_title'     => $request->sub_title,
+            'description'     => $request->description,
+            'thumbnail'     => $request->thumbnail,
+            'valid'    => $request->valid,
+        ]);
+        Toastr::success('Blog Updated Successfully', 'Success');
+    } else {
+        $errMsgs = $validator->messages();
+        foreach ($errMsgs->all() as $msg) {
+            Toastr::error($msg, 'Required');
+        }
+    }
+
+    return redirect()->back();
     }
 
     /**

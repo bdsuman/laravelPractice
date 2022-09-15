@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-lg-2">description</label>
+                            <label class="control-label col-lg-2">Description</label>
                             <div class="col-lg-10">
                                 <textarea class="form-control" name="description" placeholder="Write Short Description"></textarea>
                             </div>

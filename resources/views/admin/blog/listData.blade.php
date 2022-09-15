@@ -51,7 +51,7 @@
                             @foreach ($blog as $key => $value)
                                 <tr>
                                     <td>{{ ++$key }}</td>
-                                    <td>{{ $value->category_id }}</td>
+                                    <td>{{ $value->name }}</td>
                                     <td>{{ $value->title }}</td>
                                     <td>{{ $value->sub_title }}</td>
                                     <td>{{ $value->description }}</td>
@@ -66,10 +66,10 @@
                                     <td class="text-center">
                                         <a href="{{ route('blog.edit', $value->id) }}"><i class="icon-pencil"></i></a>
 
-                                        <form action="{{ route('blog.destroy', $value->id) }}" method="POST">
+                                        <form action="{{ route('blog.destroy', $value->id) }}" method="POST" >
                                                 @method('DELETE')
                                                 @csrf
-                                            <button type="submit"><i class="icon-bin"></i></button>
+                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this');"><i class="icon-bin"></i></button>
                                         </form>
 
                                     </td>

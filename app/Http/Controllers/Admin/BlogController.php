@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\DB;
 class BlogController extends Controller
 {
     /**
@@ -18,8 +18,18 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $data['blog'] = Blog::get();
-        // $data['blogCategories'] = BlogCategory::withTrashed()->get();
+        //$data['blog'] = Blog::get();
+        // $data['blog'] = DB::table('blogs AS b')
+        //             ->select('bc.name','b.id','b.title','b.sub_title','b.description','b.thumbnail','b.valid')
+        //             ->join('blog_categories AS bc', function ($join) {
+        //                 $join->on('b.category_id', '=', 'bc.id');
+        //             })->get();
+        
+        $data['blog'] = DB::table('blogs AS b')
+            ->select('bc.name','b.id','b.title','b.sub_title','b.description','b.thumbnail','b.valid')
+            ->join('blog_categories AS bc','b.category_id', '=', 'bc.id')
+            ->get();
+        // $data['blogCategories'] = BlogCategory::withTrashed()->get();    
         return view('admin.blog.listData', $data);
     }
 
@@ -149,6 +159,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Blog::find($id)->delete();
+        Toastr::success('Category Deleted successfully', 'Success');
+        return redirect()->back();
     }
 }

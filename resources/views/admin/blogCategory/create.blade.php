@@ -1,6 +1,6 @@
 @extends('admin.layouts.default')
 
-@section('title', 'User')
+@section('title', 'Blog Category Add')
 
 @section('content')
     <!-- Page header -->

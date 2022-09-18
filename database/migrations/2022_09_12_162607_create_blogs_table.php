@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('thumbnail')->nullable();
             $table->timestamps();
+            $table->softDeletes();
             $table->boolean('valid')->comment('0=Inactive, 1=Active')->default(1);
         });
     }

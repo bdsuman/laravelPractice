@@ -61,7 +61,7 @@
                                         <form action="{{ route('blogCategory.destroy', $category->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                            <button type="submit"><i class="icon-bin"></i></button>
+                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this');"><i class="icon-bin"></i></button>
                                         </form>
 
                                     </td>

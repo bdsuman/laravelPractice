@@ -60,6 +60,8 @@ class BlogController extends Controller
             'description'  => 'required',
             'description'  => 'required',
             'valid' => 'required',
+            'thumbnail' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+
         ]);
 
         if ($validator->passes()) {
@@ -128,16 +130,29 @@ class BlogController extends Controller
         'description'  => 'required',
         'description'  => 'required',
         'valid' => 'required',
+        //'thumbnail' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
     ]);
 
     if ($validator->passes()) {
+        // dd($request->thumbnail);
+        // return $request->thumbnail;
+      //  return $request->file('thumbnail')->getSize();
+        if(!empty($request->thumbnail)){
+            //return 'Image Uploded';
+            $thumbnail = self::fileUploader($request->thumbnail, public_path('uploads/blogThumb'));
+        }else{
+           // return 'Image Not Uploded';
+            $thumbnail = $request->oldthumbnail;
+        }
+
+       //return $thumbnail;
 
         Blog::find($id)->update([
             'category_id'     => $request->category_id,
             'title'     => $request->title,
             'sub_title'     => $request->sub_title,
             'description'     => $request->description,
-            'thumbnail'     => $request->thumbnail,
+            'thumbnail'     => $thumbnail,
             'valid'    => $request->valid,
         ]);
         Toastr::success('Blog Updated Successfully', 'Success');

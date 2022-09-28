@@ -32,7 +32,7 @@
             </div>
 
             <div class="panel-body">
-                <form class="form-horizontal" action="{{ route('blog.update', $blog->id) }}" method="POST">
+                <form class="form-horizontal" action="{{ route('blog.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -68,10 +68,19 @@
                                 <textarea class="form-control" name="description" placeholder="Write Short Description">{{ $blog->description }}</textarea>
                             </div>
                         </div>
+                      
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Old Image</label>
+                            <div class="col-lg-10">
+                                <img class="img-fluid" width="120" height="80" src="{{ asset('uploads/blogThumb/'.$blog->thumbnail) }}" alt="Not Found Thumbnail">
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
                             <label class="control-label col-lg-2">Image</label>
                             <div class="col-lg-10">
                                 <input type="file" name="thumbnail" class="form-control" accept="image/*"/>
+                                <input type="hidden" name="oldthumbnail" class="form-control" value="{{ $blog->thumbnail }}"/>
                             </div>
                         </div>
 

@@ -32,7 +32,7 @@
             </div>
 
             <div class="panel-body">
-                <form class="form-horizontal" action="{{ route('blog.store') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <fieldset class="content-group">

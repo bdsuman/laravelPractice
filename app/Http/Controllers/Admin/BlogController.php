@@ -74,7 +74,7 @@ class BlogController extends Controller
                 'title'     => $request->title,
                 'sub_title'     => $request->sub_title,
                 'description'     => $request->description,
-                'thumbnail'     => $request->thumbnail,
+                'thumbnail'   => self::fileUploader($request->thumbnail, public_path('uploads/blogThumb')),
                 'valid'    => $request->valid,
             ]);
             Toastr::success('Blog Created successfully', 'Success');
@@ -162,5 +162,11 @@ class BlogController extends Controller
         Blog::find($id)->delete();
         Toastr::success('Category Deleted successfully', 'Success');
         return redirect()->back();
+    }
+    public static function fileUploader($mainFile, $path)
+    {
+        $fileName = time().'.'.$mainFile->extension();
+        $mainFile->move($path, $fileName);
+        return $fileName;
     }
 }

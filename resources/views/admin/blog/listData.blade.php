@@ -55,7 +55,9 @@
                                     <td>{{ $value->title }}</td>
                                     <td>{{ $value->sub_title }}</td>
                                     <td>{{ $value->description }}</td>
-                                    <td>{{ $value->thumbnail }}</td>
+                                    <td>
+                                        <img class="img-fluid" width="120" height="80" src="{{ asset('uploads/blogThumb/'.$value->thumbnail) }}" alt="Blog Thumbnail">
+                                    </td>
                                     <td>
                                         @if ($value->valid == 1)
                                             <span class="label label-success">Active</span>

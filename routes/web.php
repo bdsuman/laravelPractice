@@ -29,10 +29,10 @@ use Illuminate\Support\Facades\Route;
 // *****************************************
 
 
-// Route::get('/', [App\Http\Controllers\Admin\MasterController::class, 'dashboard']);
-Route::get('/', function(){
-    return Helper::strip_whitespace("  I'm a string!  ");
-});
+Route::get('/', [App\Http\Controllers\Admin\MasterController::class, 'dashboard']);
+// Route::get('/', function(){
+//     return Helper::strip_whitespace("  I'm a string!  ");
+// });
 // USER ROUTE
 Route::get('users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('usersIndex');
 Route::get('users/create', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('usersCreate');

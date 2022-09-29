@@ -1,6 +1,6 @@
 <?php
 
-class Helpers {
+class Helper {
     public static function strip_whitespace ($string) {
         // do some magic
         return self::do_magic();
@@ -19,4 +19,4 @@ class Helpers {
     }
 }
 
-$result = Helper::strip_whitespace("  I'm a string!  ");
+// $result = Helper::strip_whitespace("  I'm a string!  ");

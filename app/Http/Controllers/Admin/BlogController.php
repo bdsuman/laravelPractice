@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Validator;
-
+use Helper;
 class BlogController extends Controller
 {
     /**
@@ -77,7 +77,7 @@ class BlogController extends Controller
                 'title'     => $request->title,
                 'sub_title'     => $request->sub_title,
                 'description'     => $request->description,
-                'thumbnail'   =>  Helpers::fileUploader($request->thumbnail, public_path('uploads/blogThumb')),
+                'thumbnail'   =>  Helper::fileUploader($request->thumbnail, public_path('uploads/blogThumb')),
                 'valid'    => $request->valid,
             ]);
             Toastr::success('Blog Created successfully', 'Success');
@@ -140,7 +140,7 @@ class BlogController extends Controller
       //  return $request->file('thumbnail')->getSize();
         if(!empty($request->thumbnail)){
             //return 'Image Uploded';
-            $thumbnail = Helpers::fileUploader($request->thumbnail, public_path('uploads/blogThumb'));
+            $thumbnail = Helper::fileUploader($request->thumbnail, public_path('uploads/blogThumb'));
         }else{
            // return 'Image Not Uploded';
             $thumbnail = $request->oldthumbnail;

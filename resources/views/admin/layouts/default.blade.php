@@ -341,8 +341,8 @@
 							<ul class="navigation navigation-main navigation-accordion">
 
 								<!-- Main -->
-								{{-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> --}}
-								<li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="{{ url('/') }}"><a href="{{ url('/') }}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<!--<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>-->
+								<li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="{{ url('/') }}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 								<li class="{{ (request()->is('users*')) ? 'active' : '' }}"><a href="{{ url('users') }}"><i class="icon-user-plus"></i> <span>Users</span></a></li>
 								<li class="{{ (request()->is('blogCategory/*')) ? 'active' : '' }}"><a href="{{ route('blogCategory.index') }}"><i class="icon-user-plus"></i> <span>Blog Category</span></a></li>
 								<li class="{{ (request()->is('blog/*')) ? 'active' : '' }}"><a href="{{ route('blog.index') }}"><i class="icon-user-plus"></i> <span>Blog</span></a></li>

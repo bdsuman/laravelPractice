@@ -389,6 +389,6 @@
 	<script type="text/javascript" src="{{ asset('admin/assets/js/core/app.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('admin/assets/js/pages/datatables_basic.js') }}"></script>
 	<!-- /theme JS files -->
-
+	@include('sweetalert::alert')
 </body>
 </html>

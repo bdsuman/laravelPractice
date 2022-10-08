@@ -6,6 +6,7 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class BlogCategoryController extends Controller
@@ -56,7 +57,8 @@ class BlogCategoryController extends Controller
                 'name'     => $request->name,
                 'valid'    => $request->valid,
             ]);
-            Toastr::success('Category created successfully', 'Success');
+           // Toastr::success('Category created successfully', 'Success');
+            Alert::success('Success Title', 'Success Message');
         } else {
             $errMsgs = $validator->messages();
             foreach ($errMsgs->all() as $msg) {

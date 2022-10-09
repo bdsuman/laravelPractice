@@ -58,10 +58,10 @@
                                     <td class="text-center">
                                         <a href="{{ route('blogCategory.edit', $category->id) }}"><i class="icon-pencil"></i></a>
 
-                                        <form action="{{ route('blogCategory.destroy', $category->id) }}" method="POST">
+                                        <form action="{{ route('blogCategory.destroy', $category->id) }}" data-type="" method="POST" class="data-delete" delete-link="{{ route('blogCategory.destroy', $category->id) }}">
                                                 @method('DELETE')
                                                 @csrf
-                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this');"><i class="icon-bin"></i></button>
+                                            <button type="submit" ><i class="icon-bin"></i></button>
                                         </form>
 
                                     </td>
@@ -69,7 +69,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="6">No Data found!</td>
+                                <td colspan="4">No Data found!</td>
                             </tr>
                         @endif
 

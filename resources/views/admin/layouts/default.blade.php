@@ -381,6 +381,9 @@
 	<script type="text/javascript" src="{{ asset('admin/assets/js/core/libraries/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('admin/assets/js/plugins/loaders/blockui.min.js') }}"></script>
 	<!-- /core JS files -->
+	@include('sweetalert::alert')
+	<script type="text/javascript" src="{{ asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('admin/assets/js/custom_frame.js') }}"></script>
 
 	<!-- Theme JS files -->
 	<script type="text/javascript" src="{{ asset('admin/assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
@@ -389,6 +392,6 @@
 	<script type="text/javascript" src="{{ asset('admin/assets/js/core/app.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('admin/assets/js/pages/datatables_basic.js') }}"></script>
 	<!-- /theme JS files -->
-	@include('sweetalert::alert')
+
 </body>
 </html>

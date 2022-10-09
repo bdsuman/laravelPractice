@@ -1,68 +1,70 @@
 
-$(document).on('click', '.data-list #delete', function(e) {
+$( document ).ready(function() {
+   // alert();
+});
+$(document).on('click', '.data-delete', function(e) {
     e.preventDefault();
     var deleteLinkUrl = $(this).attr('delete-link');
+    //var deleteLinkUrl = $(this).attr('href')
+    //alert(deleteLinkUrl);
     var dataType = ($(this).attr('data-type')) ? $(this).attr('data-type') : 'html';
+    // alert(dataType);
     var callBack = ($(this).attr('callback')) ? $(this).attr('callback') : false;
+   // alert(callBack);
     var csrf = $(this).find("input[name='_token']").val();
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, You will not be able to recover this imaginary file!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#FF7043",
-        confirmButtonText: "Yes, delete it!",
-        closeOnCancel: false
-    }, 
-    function(isConfirm){
-        if (isConfirm) {
-            
-            $.ajax({
-                url : deleteLinkUrl,
-                type: "POST",
-                data: {"_token": csrf, '_method':'DELETE'}, 
-                dataType: dataType,
-                success:function(data){
-                    var dataError = (dataType=="html") ? data.trim() : data.error;
+  //  alert(csrf);
+  //Swal.fire(`Your IP address is`)
+//   alert();
+Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+    if (result.value) {
+        // form.submit();
+        $.ajax({
+            url : deleteLinkUrl,
+            type: "POST",
+            data: {"_token": csrf, '_method':'DELETE'}, 
+            dataType: dataType,
+            success:function(data){
+                //alert(data);
+                //location.reload();
+                
+                var dataError = (dataType=="html") ? data.trim() : data.error;
                     if((typeof dataError!==typeof undefined) && (dataError)) {
-                        swal({
+                        Swal.fire({
                             title: "Oops...",
                             text: dataError,
                             confirmButtonColor: "#EF5350",
                             type: "error"
                         });
                     } else {
-                        swal({
+                        Swal.fire({
                             title: "Deleted!",
                             text: "This data has been deleted!",
                             confirmButtonColor: "#66BB6A",
                             type: "success"
-                        },function(isConfirm) {
-                            if (isConfirm == true) {
-                                // swal.close();
-                                location.reload();
-                            }
-                        });
+                        }).then(function() {
+                                // Swal.close();
+                               location.reload();
+                            });
                     }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    swal({
-                        title: "Opps!!",
-                        text: "Seems you couldn't submit form for a longtime. Please refresh your form & try again",
-                        confirmButtonColor: "#EF5350",
-                        type: "error"
-                    });
-                }
-            });
-        } else {
-            swal({
-                title: "Cancelled",
-                text: "Your imaginary file is safe :)",
-                confirmButtonColor: "#2196F3",
-                type: "error"
-            });
-        }
-    });
+            }
+       });     
+    } else {
+        Swal.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            confirmButtonColor: "#2196F3",
+            type: "error"
+        });
+    }
+});
 })
 
 $(document).on('click', '.data-list #decisionMake', function(e) {
@@ -71,7 +73,7 @@ $(document).on('click', '.data-list #decisionMake', function(e) {
     var alertText = $(this).attr('alert-text');
     var confirmBtnText = $(this).attr('confirmBtn-text');
     var csrf = $(this).find("input[name='_token']").val();
-    swal({
+    Swal({
         title: "Are you sure?",
         text: alertText,
         type: "warning",
@@ -92,28 +94,28 @@ $(document).on('click', '.data-list #decisionMake', function(e) {
                     let msgType = response.msgType;
                     let messege = response.messege;
                     if (msgType == 'danger') {
-                        swal({
+                        Swal({
                             title: "Opps!!",
                             text: messege,
                             confirmButtonColor: "#EF5350",
                             type: "error"
                         });
                     } else {
-                        swal({
+                        Swal({
                             title: "Done!",
                             text: messege,
                             confirmButtonColor: "#66BB6A",
                             type: 'success'
                         },function(isConfirm) {
                             if (isConfirm == true) {
-                                // swal.close();
+                                // Swal.close();
                                 location.reload();
                             }
                         });
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    swal({
+                    Swal({
                         title: "Opps!!",
                         text: "Seems you couldn't submit form for a longtime. Please refresh your form & try again",
                         confirmButtonColor: "#EF5350",
@@ -122,7 +124,7 @@ $(document).on('click', '.data-list #decisionMake', function(e) {
                 }
             });
         } else {
-            swal({
+            Swal({
                 title: "Cancelled",
                 text: "Your imaginary decision is safe :)",
                 confirmButtonColor: "#2196F3",
@@ -268,7 +270,7 @@ $('.upload-attachment a').on('click', function (event) {
 })
 
 function redirectLoginPage(userType) {
-    swal({
+    Swal({
         title: "Sorry!!",
         text: "You have logged out.",
         type: "error",

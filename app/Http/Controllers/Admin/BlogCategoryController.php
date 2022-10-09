@@ -130,7 +130,7 @@ class BlogCategoryController extends Controller
     public function destroy($id)
     {
         BlogCategory::find($id)->delete();
-        Toastr::success('Category Deleted successfully', 'Success');
-        return redirect()->back();
+        //Toastr::success('Category Deleted successfully', 'Success');
+        //return redirect()->back();
     }
 }

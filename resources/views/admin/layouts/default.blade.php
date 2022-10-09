@@ -381,6 +381,11 @@
 	<script type="text/javascript" src="{{ asset('admin/assets/js/core/libraries/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('admin/assets/js/plugins/loaders/blockui.min.js') }}"></script>
 	<!-- /core JS files -->
+
+	{{-- bootbox modal --}}
+	<script type="text/javascript" src="{{ asset('admin/assets/js/bootbox.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('admin/assets/js/bootbox.locales.min.js') }}"></script>
+
 	@include('sweetalert::alert')
 	<script type="text/javascript" src="{{ asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('admin/assets/js/custom_frame.js') }}"></script>

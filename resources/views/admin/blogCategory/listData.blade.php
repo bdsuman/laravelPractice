@@ -24,7 +24,7 @@
                 <h5 class="panel-title">Blog Category</h5>
                 <div class="heading-elements">
                     <ul class="icons-list">
-                        <li style="margin-right: 10px;"><a href="{{ route('blogCategory.create') }}" class="btn btn-primary add-new">Add New</a></li>
+                        <li style="margin-right: 10px;"><a href="{{ route('blogCategory.create') }}" class="btn btn-primary add-new open-modal" modal-title="Blog Category Create" modal-type="create" modal-size="large" modal-class="rubberBand animated" selector="categoryCreate">Add New</a></li>
                         <li><a data-action="collapse"></a></li>
                         <li><a data-action="reload"></a></li>
                         <li><a data-action="close"></a></li>
@@ -56,7 +56,7 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('blogCategory.edit', $category->id) }}"><i class="icon-pencil"></i></a>
+                                        <a href="{{ route('blogCategory.edit', $category->id) }}" class="open-modal" modal-title="Blog Category Edit" modal-type="update" modal-size="large" modal-class="rubberBand animated" selector="categoryEdit"><i class="icon-pencil"></i></a>
 
                                         <form action="{{ route('blogCategory.destroy', $category->id) }}" data-type="" method="POST" class="data-delete" delete-link="{{ route('blogCategory.destroy', $category->id) }}">
                                                 @method('DELETE')

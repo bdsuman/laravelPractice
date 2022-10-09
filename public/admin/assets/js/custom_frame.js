@@ -135,16 +135,17 @@ $(document).on('click', '.data-list #decisionMake', function(e) {
 })
 
 
-$(document).on('click', '.data-list .open-modal', function(e) {
+$(document).on('click', '.open-modal', function(e) {
 
     e.preventDefault();
     var modalTitle = $(this).attr('modal-title');
     var modalType = $(this).attr('modal-type');
     var modalSize = $(this).attr('modal-size');
     var className = $(this).attr('modal-class');
-    var url = $(this).attr('modal-link');
+    // var url = $(this).attr('modal-link');
+    var url = $(this).attr('href');
     var selector =$(this).attr('selector');
-    
+    //alert(modalTitle);
     if (modalType=="create") {
         var successButton = "Save";
     } else if (modalType=="update") {
